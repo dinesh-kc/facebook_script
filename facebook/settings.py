@@ -27,7 +27,7 @@ SECRET_KEY = '#+ns72on$%^h5g!b7jel4c!#h_qtl6fkjo6a12d1)20fyol&)x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'credentials'
+    'credentials',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -125,5 +126,9 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 
+# LOGIN_URL = ‘/facebook/user_login/’
+
 
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

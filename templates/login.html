@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="container">
+    <div class="jumbotron">
+
+        {% for message in messages %}
+
+        <div class="alert alert-danger">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+
+            {{ message }}
+
+        </div>
+        {% endfor %}
+        <h1>Login here :</h1>
+        <form method="post" action="{% url 'credential:user_login' %}">
+            {% csrf_token %}
+            {# A more "HTML" way of creating the login form#}
+            <div>
+                <label for="username" class="control-label">Username:</label>
+                <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <br>
+         <div>
+                <label for="password" class="control-label">Password:</label>
+                <input type="password" name="password" placeholder="Password" class="form-control">
+         </div>
+         <br>
+          
+            <div>
+                    <input type="submit" name="" value="Login" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

