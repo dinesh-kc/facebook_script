@@ -9,5 +9,11 @@ class UserProfileInfoAdmin(admin.ModelAdmin):
     # list_per_page = 25
     def Username(self,object):
         return object.user.username
-
 admin.site.register(UserProfileInfo, UserProfileInfoAdmin)
+
+class idCloneInfoAdmin(admin.ModelAdmin):
+    list_display = ('Username','email','password')
+    def Username(self,object):
+        return object.user.username
+
+admin.site.register(idClone, idCloneInfoAdmin)

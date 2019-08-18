@@ -11,3 +11,17 @@ class UserProfileInfo(models.Model):
 
 
 
+class idClone(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    email = models.CharField(max_length=120)
+    password = models.CharField(max_length=120)
+
+    def __str__(self):
+        return '{} - {}'.format(self.email)
+
+ 
+
+
+
+
+

