@@ -4,7 +4,7 @@
 *.pyc
 logs/
 __pycache__/
-venv/
+myenv/
 
 ### OSX ###
 .DS_Store
